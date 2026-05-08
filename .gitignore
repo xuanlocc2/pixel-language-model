@@ -37,6 +37,7 @@ runs/pix2struct_finetune/*
 !runs/pix2struct_finetune/best.pt
 !runs/pix2struct_finetune/metadata.json
 !runs/pix2struct_finetune/pair_split.json
+!runs/pix2struct_finetune/patch_tokenizer_aug_w4.json
 
 # Local smoke runs
 runs/smoke_*/
