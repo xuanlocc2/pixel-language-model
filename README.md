@@ -28,7 +28,7 @@ artifacts/patch_tokenizer_aug_w4.json
 runs/pix2struct_finetune/best.pt
 ```
 
-The Pix2Struct encoder is loaded from Hugging Face at runtime. The checkpoint stores the trained visual decoder/projection weights, so the instructor can generate predictions without retraining.
+The Pix2Struct encoder is loaded from Hugging Face at runtime. The checkpoint stores the trained visual decoder/projection weights, so you can generate predictions without retraining.
 
 ## Setup
 
@@ -36,6 +36,21 @@ The Pix2Struct encoder is loaded from Hugging Face at runtime. The checkpoint st
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 pip install numpy pandas pillow tqdm matplotlib transformers accelerate sentencepiece protobuf
 ```
+
+## Hardware Requirements
+
+Generation from the provided checkpoint does not require retraining. A CUDA GPU is recommended because the pipeline loads `google/pix2struct-base` and runs a visual encoder plus autoregressive decoder, but CPU inference is possible for small batches if speed is not important.
+
+Recommended training hardware:
+
+```text
+GPU: NVIDIA RTX 4090 24GB or similar
+VRAM: 24GB recommended
+RAM: 16GB minimum, 32GB recommended
+Disk: at least 5GB free for dependencies, Hugging Face cache, checkpoints, and outputs
+```
+
+The training commands below are tuned for a 24GB RTX 4090 with `--batch-size 1`, `--grad-accum 16`, and `--pix2struct-max-patches 512`. On smaller GPUs, reduce `--pix2struct-max-patches` to `256` and keep batch size at `1`; training will be slower and may lose some long-context visual detail.
 
 ## Paths
 
