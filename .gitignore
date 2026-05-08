@@ -1,0 +1,49 @@
+# Python/cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+my_venv/
+
+# Raw competition data and local attachments
+data/
+train.csv
+test.csv
+*.pdf
+*.zip
+submission/
+submission_*/
+outputs/
+
+# Generated scratch artifacts
+artifacts/*
+!artifacts/.gitkeep
+!artifacts/patch_tokenizer_aug_w4.json
+
+# Training runs. Keep only selected final checkpoints/metadata.
+runs/*
+!runs/.gitkeep
+!runs/pix2struct_aug40/
+runs/pix2struct_aug40/*
+!runs/pix2struct_aug40/best.pt
+!runs/pix2struct_aug40/metadata.json
+!runs/pix2struct_aug40/pair_split.json
+!runs/pix2struct_finetune/
+runs/pix2struct_finetune/*
+!runs/pix2struct_finetune/best.pt
+!runs/pix2struct_finetune/metadata.json
+!runs/pix2struct_finetune/pair_split.json
+
+# Local smoke runs
+runs/smoke_*/
+artifacts/*smoke*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
